@@ -30,6 +30,12 @@ class Users extends Migration
                 'constraint' => 255,
                 'null' => FALSE,
             ],
+            'role' => [ // KOLOM BARU UNTUK ROLE
+                'type' => 'ENUM',
+                'constraint' => ['admin', 'user'],
+                'default' => 'user',
+                'null' => FALSE,
+            ],
             'created_at' => [
                 'type' => 'datetime',
                 'null' => TRUE
@@ -43,8 +49,6 @@ class Users extends Migration
         $this->forge->addKey('id', TRUE);
         $this->forge->createTable('users');
     }
-
-    //--------------------------------------------------------------------
 
     public function down()
     {
